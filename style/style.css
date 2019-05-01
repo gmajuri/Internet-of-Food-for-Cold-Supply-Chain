@@ -79,3 +79,33 @@ body {
     padding:20px;
 }
 
+/* Table */
+#temperatureTable {
+    border: 2px solid #00A053;
+    border-collapse: collapse;
+    margin:auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#temperatureTable td, #temperatureTable th {
+    border: 1px solid rgb(191, 34, 139);
+    padding: 8px;
+
+  }
+#temperatureTable tr:nth-child(even){
+    background-color: #A4D6B3;
+}
+#temperatureTable tr:nth-child(odd){
+    background-color: #9EE8B4;
+}
+
+#temperatureTable tr:hover {background-color: #D5E5D0;}
+/* make table header cells have a darker background colour and a different font colour */
+#temperatureTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #2E8A11;
+    color: white;
+  }
+  /* end table */
