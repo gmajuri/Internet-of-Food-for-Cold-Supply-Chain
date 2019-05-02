@@ -10,10 +10,96 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style/style.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['line'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var data = new google.visualization.DataTable();
+            data.addColumn('number', 'Day');
+            data.addColumn('number', 'Temperature');
+            data.addRows([
+                [1, 8],
+                [2, 1],
+                [3, -3],
+                [4, 5],
+                [5, 8],
+                [6, -7],
+                [7, 5],
+                [8, 2],
+                [9, -1],
+                [10, 1],
+                [11, 5.3],
+                [12, -6.6],
+                [13, 4.8],
+                [14, 4.2]
+            ]);
+
+            var options = {
+                chart: {
+                    title: 'Temperature history',
+                    subtitle: 'celsius'
+                },
+                width: 900,
+                height: 500,
+                axes: {
+                    x: {
+                        0: { side: 'top' }
+                    }
+                }
+            };
+
+            var chart = new google.charts.Line(document.getElementById('line_top_x'));
+
+            chart.draw(data, google.charts.Line.convertOptions(options));
+        }
+
+    </script>
+    <script>
+        // Controll the menu display
+        function menuController(value) {
+            if (value == "productInformation") {
+                //Set the nav to active
+                document.getElementById("activeProductInformation").setAttribute("class", "active");
+                //Remove the class active on the other
+                document.getElementById("activeTemperatureChart").classList.remove("active");
+                document.getElementById("activeTemperatureTable").classList.remove("active");
+                //Display the product information
+                document.getElementById("productInformation").hidden = false;
+                document.getElementById("temperatureChart").hidden = true;
+                document.getElementById("temperatureTable").hidden = true;
+            } else if (value == "temperatureChart") {
+                //Set the nav to active
+                document.getElementById("activeTemperatureChart").setAttribute("class", "active");
+                //Remove the class active on the other
+                document.getElementById("activeProductInformation").classList.remove("active");
+                document.getElementById("activeTemperatureTable").classList.remove("active");
+
+                //Display the temperature chart
+                document.getElementById("productInformation").hidden = true;
+                document.getElementById("temperatureChart").hidden = false;
+                document.getElementById("temperatureTable").hidden = true;
+            } else if (value == "temperatureTable") {
+                //Set the nav to active
+                document.getElementById("activeTemperatureTable").setAttribute("class", "active");
+                //Remove the class active on the other
+                document.getElementById("activeProductInformation").classList.remove("active");
+                document.getElementById("activeTemperatureChart").classList.remove("active");
+                //Display the temperature table
+                document.getElementById("productInformation").hidden = true;
+                document.getElementById("temperatureChart").hidden = true;
+                document.getElementById("temperatureTable").hidden = false;
+            }
+
+        }
+    </script>
 
 </head>
 
-<body>
+<body  onload="menuController('productInformation')">
+
     <div id="container">
         <!-- Navigation -->
         <nav class="navbar navbar-default">
@@ -45,50 +131,68 @@
         <!-- body -->
         <div id="body">
             <div class="row">
-                <div class="col-xs-2"></div>
-                <div class="col-xs-8">
-                    <h4>Estimate expiry date: 7 April</h4>
-                    <h4>Location: </h4>
-                    <h4>Weight: </h4>
-                    <h4>Current Price: </h4>
-                    <h4>Temperature chart </h4>
+                <div class="col-xs-3">
+                    <div id="menu">
+                        <ul>
+                            <li class="topMenu" style="text-align: center">Menu</li>
+                            <li id="activeProductInformation"><a href="#"
+                                    onclick="menuController('productInformation')">Product information</a></li>
+                            <li id="activeTemperatureChart"><a href="#"
+                                    onclick="menuController('temperatureChart')">Temperature Chart</a></li>
+                            <li id="activeTemperatureTable"><a href="#"
+                                    onclick="menuController('temperatureTable')">Temperature table</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-7">
+                    <div id="productInformation">
+                        <h4>Estimate expiry date: <span class="widget">7 April</span></h4>
 
+                        <h4>Location: </h4>
+                        <h4>Weight:<span class="widget">1kg</span> </h4>
+                        <h4>Current Price: <span class="widget">$20</span></h4>
+                    </div>
+                    <div id="temperatureChart">
+                        <div id="line_top_x"></div>
+                    </div>
+                    <div id="temperatureTable">
+                        <table id="temperatureTable">
+                            <tr>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Temperature Celsius</th>
+                                <th>Location</th>
+                            </tr>
+                            <tr>
+                                <td>4-Aril</td>
+                                <td>1:00 am</td>
+                                <td>1</td>
+                                <td>Melbourne Port</td>
+                            </tr>
+                            <tr>
+                                <td>4-Aril</td>
+                                <td>2:00 am</td>
+                                <td>1</td>
+                                <td>Melbourne Port</td>
+                            </tr>
+                            <tr>
+                                <td>4-Aril</td>
+                                <td>3:00 am</td>
+                                <td>3</td>
+                                <td>Truck</td>
+                            </tr>
+                            <tr>
+                                <td>4-Aril</td>
+                                <td>4:00 am</td>
+                                <td>3</td>
+                                <td>Coles store</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
                 <div class="col-xs-2"></div>
             </div>
-            <div class="row">
-                <div class="col-xs-2"></div>
-                <div class="col-xs-8">
-                    <h4>Temperature table: </h4>
-                    <table id="temperatureTable">
-                        <tr>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Temperature Celsius</th>
-                            <th>Location</th>
-                        </tr>
-                        <tr>
-                            <td>4-Aril</td>
-                            <td>1:00 am</td>
-                            <td>1</td>
-                            <td>Melbourne Port</td>
-                        </tr>
-                        <tr>
-                            <td>4-Aril</td>
-                            <td>2:00 am</td>
-                            <td>1</td>
-                            <td>Melbourne Port</td>
-                        </tr>
-                        <tr>
-                            <td>4-Aril</td>
-                            <td>3:00 am</td>
-                            <td>3</td>
-                            <td>Truck</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="col-xs-2"></div>
-            </div>
+
         </div>
         <!-- End body -->
         <!-- Footer -->

@@ -81,7 +81,8 @@ body {
 
 /* Table */
 #temperatureTable {
-    border: 2px solid #00A053;
+
+    width: 100%;
     border-collapse: collapse;
     margin:auto;
     padding-top: 10px;
@@ -109,3 +110,50 @@ body {
     color: white;
   }
   /* end table */
+ .widget {
+    background-color: #D4CD6A;
+    border-radius: 20px; 
+    padding:2px 10px;
+    color: #1C1A59;
+    border: 2px solid #F7F740;
+ }
+ /* menu */
+ #menu {
+    /* position: fixed;
+    left: 0; */
+    margin-left: 20px;
+    border: 3px solid #73AD21;
+}
+#menu ul {
+    font-size: 20px;
+    text-align: center;
+    margin: 0px;
+    padding:0px;
+    /* width: 10%; */
+    list-style-type: none;
+    background-color: #FFE168;
+    border: 1px solid #555;
+  }
+  #menu li a {
+    display: block;
+    color: #000;
+    padding: 5px 10px;
+    text-decoration: none;
+  }
+  #menu li {
+    text-align: center;
+    border-bottom: 1px solid rgb(143, 118, 18);
+    padding: 10px;
+    text-align: left;
+  }
+  #menu li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  }
+  .active{
+    background-color: #D0A700;
+  }
+  .topMenu {
+    background-color:#378B2E;
+    color: white;
+  }

@@ -32,6 +32,7 @@
                     <ul class="nav navbar-nav">
                         <li><a class="active" href="ShelfLifeManagement.html">Shelf Life Management</a></li>
                         <li><a href="SearchProduct.html">Search</a></li>
+                        <li><a href="ProductDetail.html">Product detail</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -46,17 +47,13 @@
             <div class="row">
                 <div class="col-xs-2"></div>
                 <div class="col-xs-8">
-                    
+                    <div id="buttonList">
+
+                    </div>
                 </div>
                 <div class="col-xs-2"></div>
             </div>
-            <div class="row">
-                <div class="col-xs-2"></div>
-                <div class="col-xs-8">
-                    
-                </div>
-                <div class="col-xs-2"></div>
-            </div>
+
         </div>
         <!-- End body -->
         <!-- Footer -->
@@ -68,5 +65,45 @@
     </div>
 
 </body>
+<script>
+    //Creates a Button, with the given text 
+    //document.getElementById("buttonList").innerHTML = "hello"
+    var startDate = new Date("2019-10-01"); //YYYY-MM-DD
+    var endDate = new Date("2017-10-07"); //YYYY-MM-DD
+
+    var getDateArray = function (start, end) {
+        var arr = new Array();
+        var dt = new Date(start);
+        while (dt <= end) {
+            arr.push(new Date(dt));
+            dt.setDate(dt.getDate() + 1);
+        }
+        return arr;
+    }
+
+    var dateArr = getDateArray(startDate, endDate);
+    
+    for (var i = 0; i < dateArr.length; i++) {
+        console.log("hello" + dateArr[i]);
+        document.getElementById("buttonList").innerHTML = "<p>" + dateArr[i] + "</p>"
+    }
+    // function createButton(text) {
+    //     // console.log("Creating BUTTON with text: " + text);
+    //     // create a SPAN tag, 
+    //     var element = document.createElement("BUTTON");
+    //     //append paragraph to document.body
+    //     document.body.appendChild(element);
+
+    //     // check if text is not undefined 
+    //     if (typeof (text) !== 'undefined') {
+    //         // the variable [text] does exist, so use it
+    //         element.innerHTML = "";
+    //         var textNode = document.createTextNode(text);
+    //         element.appendChild(textNode);
+    //     }
+    //     // return the element so the caller can use it
+    //     return element;
+    // }
+</script>
 
 </html>
