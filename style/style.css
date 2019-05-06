@@ -157,3 +157,20 @@ body {
     background-color:#378B2E;
     color: white;
   }
+  #buttonList {
+    max-width: 1000px;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  #buttonList button{
+    height: 150px;
+    width: 150px;
+    margin: 20px;
+    background-color: yellowgreen;
+    border-radius: 10%;
+    cursor: pointer;
+    border: 2px solid green;
+    font-size: 30px;
+  }

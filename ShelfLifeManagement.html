@@ -10,6 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style/style.css">
+    <script type="text/javascript" src="js/ui.js"></script>
 
 </head>
 
@@ -47,6 +48,7 @@
             <div class="row">
                 <div class="col-xs-2"></div>
                 <div class="col-xs-8">
+                    <h2 style="text-align: center"> Estimate expiry Date </h2>
                     <div id="buttonList">
 
                     </div>
@@ -66,10 +68,11 @@
 
 </body>
 <script>
+
     //Creates a Button, with the given text 
     //document.getElementById("buttonList").innerHTML = "hello"
     var startDate = new Date("2019-10-01"); //YYYY-MM-DD
-    var endDate = new Date("2017-10-07"); //YYYY-MM-DD
+    var endDate = new Date("2019-10-05"); //YYYY-MM-DD
 
     var getDateArray = function (start, end) {
         var arr = new Array();
@@ -82,28 +85,35 @@
     }
 
     var dateArr = getDateArray(startDate, endDate);
-    
-    for (var i = 0; i < dateArr.length; i++) {
-        console.log("hello" + dateArr[i]);
-        document.getElementById("buttonList").innerHTML = "<p>" + dateArr[i] + "</p>"
-    }
-    // function createButton(text) {
-    //     // console.log("Creating BUTTON with text: " + text);
-    //     // create a SPAN tag, 
-    //     var element = document.createElement("BUTTON");
-    //     //append paragraph to document.body
-    //     document.body.appendChild(element);
+    console.log(dateArr);
 
-    //     // check if text is not undefined 
-    //     if (typeof (text) !== 'undefined') {
-    //         // the variable [text] does exist, so use it
-    //         element.innerHTML = "";
-    //         var textNode = document.createTextNode(text);
-    //         element.appendChild(textNode);
-    //     }
-    //     // return the element so the caller can use it
-    //     return element;
-    // }
+    for (var i = 0; i <= dateArr.length; i++) {
+        if(i == dateArr.length)
+        {
+            var numberButton = createButton("Product that expired date");
+        }
+        else
+        {
+            var numberButton = createButton(dateArr[i].getDate() + " / " +dateArr[i].getMonth());
+
+        }
+        document.getElementById("buttonList").appendChild(numberButton);
+        //Creat the anonymous function when the button click
+        //passing the color and the button element
+        expiredDate(dateArr[i], numberButton);
+    }
+
+    //Create the anonymous function when the button click
+    function expiredDate(number, numberButton) {
+
+        //when the button is clicked, call this function
+        numberButton.onclick = function () {
+            console.log(number);
+
+        }
+    }
+
+
 </script>
 
 </html>
